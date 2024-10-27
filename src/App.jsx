@@ -17,9 +17,9 @@ const App = () => {
   const totalFeedback = clicks.good + clicks.neutral + clicks.bad;
 
   const updateFeedback = feedbackType => {
-    setClicks((clicks) => ({
-      ...clicks,
-      [feedbackType]: clicks[feedbackType] + 1,
+    setClicks((oldClicks) => ({
+      ...oldClicks,
+      [feedbackType]: oldClicks[feedbackType] + 1,
     }));
   }
   const resetFeedback = () => {
@@ -34,13 +34,13 @@ const App = () => {
     localStorage.setItem("saved-grades", JSON.stringify(clicks));
   }, [clicks]);
 
-  return <>
+  return <div className="container">
     <Description name="Sip Happens Café"
       text="Please leave your feedback about our service by selecting one of the options below." />
     <Options update={updateFeedback} reset={resetFeedback} total={totalFeedback} />
     {totalFeedback ? <Feedback clicks={clicks} total={totalFeedback} /> : <Notification />}
 
-  </>
+  </div>
 };
 
 export default App;
