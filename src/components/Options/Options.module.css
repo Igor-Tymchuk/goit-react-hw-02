@@ -59,6 +59,9 @@
   background: #333333ab;
 }
 
+.btn:hover:after {
+  background-color: #404bbfb2;
+}
 .btn:hover:before {
   opacity: 1;
 }
@@ -73,6 +76,7 @@
   left: 0;
   top: 0;
   border-radius: 10px;
+  transition: background-color 0.3s ease-in-out;
 }
 
 @keyframes glowing {
