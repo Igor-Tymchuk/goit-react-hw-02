@@ -5,14 +5,16 @@ import Feedback from "./components/Feedback/Feedback";
 import Notification from "./components/Notification/Notification";
 
 const App = () => {
-  const savedGrades = JSON.parse(localStorage.getItem("saved-grades"));
-  const [clicks, setClicks] = useState({
-    good: 0,
-    neutral: 0,
-    bad: 0,
-    ...savedGrades,
-  }
-  );
+
+  const [clicks, setClicks] = useState(() => {
+    const savedGrades = localStorage.getItem("saved-grades");
+    if (!savedGrades) return {
+      good: 0,
+      neutral: 0,
+      bad: 0,
+    };
+    else { return JSON.parse(savedGrades) };
+  });
 
   const totalFeedback = clicks.good + clicks.neutral + clicks.bad;
 
