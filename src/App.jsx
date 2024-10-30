@@ -8,7 +8,7 @@ const App = () => {
 
   const [clicks, setClicks] = useState(() => {
     const savedGrades = localStorage.getItem("saved-grades");
-    if (!savedGrades) return {
+    if (savedGrades === null) return {
       good: 0,
       neutral: 0,
       bad: 0,
